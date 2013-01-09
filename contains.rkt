@@ -7,3 +7,23 @@
 ; - empty
 ; - (cons String List-of-names)
 ; interp. a List-of-names represents a list of invitees by last name
+
+; Examples
+
+; List-of-names -> Boolean
+; to determine whether "Flatt" occurs on a-list-of names
+(check-expect (contains-flatt? empty) false)
+(check-expect (contains-flatt? (cons "Findler" empty)) false)
+(check-expect (contains-flatt? (cons "Flatt" empty)) true)
+(check-expect 
+  (contains-flatt? (cons "Mur" (cons "Fish"  (cons "Find" empty)))) 
+  false) 
+(check-expect 
+  (contains-flatt? (cons "A" (cons "Flatt" (cons "C" empty)))) 
+  true)
+
+(define (contains-flatt? a-list-of-names)
+  (cond
+    [(empty? a-list-of-names) false]
+    [else (or (string=? (first a-list-of-names) "Flatt")
+          (contains-flatt? (rest a-list-of-names)))]))
