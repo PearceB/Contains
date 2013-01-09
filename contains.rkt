@@ -27,3 +27,14 @@
     [(empty? a-list-of-names) false]
     [else (or (string=? (first a-list-of-names) "Flatt")
           (contains-flatt? (rest a-list-of-names)))]))
+
+; Exercise 113
+
+; I expect the answer to be true
+(contains-flatt? (cons "Fagan" 
+  (cons "Findler" 
+    (cons "Fisler" 
+      (cons "Flanagan" 
+        (cons "Flatt" 
+          (cons "Felleisen" 
+            (cons "Friedman" empty))))))))
