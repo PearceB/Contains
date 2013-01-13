@@ -38,3 +38,13 @@
         (cons "Flatt" 
           (cons "Felleisen" 
             (cons "Friedman" empty))))))))
+
+; Exercise 114
+
+; The two different codes are almost exactly alike. They both have the basic code
+; to define what contains-flatt? does. But this second code does not account for
+; the case of when a list is empty. Therefore, the previous code is better.
+
+; ... (cond 
+;       [(string=? (first a-list-of-names) "Flatt") true] 
+;       [else (contains-flatt? (rest a-list-of-names))]) ...
