@@ -26,7 +26,7 @@
   (cond
     [(empty? a-list-of-names) false]
     [else (or (string=? (first a-list-of-names) "Flatt")
-          (contains-flatt? (rest a-list-of-names)))]))
+              (contains-flatt? (rest a-list-of-names)))]))
 
 ; Exercise 113
 
@@ -48,3 +48,19 @@
 ; ... (cond 
 ;       [(string=? (first a-list-of-names) "Flatt") true] 
 ;       [else (contains-flatt? (rest a-list-of-names))]) ...
+
+; Exercise 115
+
+; String List-of-names -> Boolean
+; To determine whether a String is contained in a list-of-names
+(check-expect (contains? "Bob" empty) false)
+(check-expect (contains? "Bob" (cons "Findler" empty)) false)
+(check-expect (contains? "Bob" (cons "Bob" empty)) true)
+(check-expect (contains? "Bob" (cons "Mur" (cons "Fish"  (cons "Wall" empty)))) false) 
+(check-expect (contains? "Bob" (cons "A" (cons "Bob" (cons "C" empty)))) true)
+
+(define (contains? string a-list-of-names)
+  (cond
+    [(empty? a-list-of-names) false]
+    [else (or (string=? (first a-list-of-names) string)
+              (contains?  string (rest a-list-of-names)))]))
