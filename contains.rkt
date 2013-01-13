@@ -15,12 +15,8 @@
 (check-expect (contains-flatt? empty) false)
 (check-expect (contains-flatt? (cons "Findler" empty)) false)
 (check-expect (contains-flatt? (cons "Flatt" empty)) true)
-(check-expect 
-  (contains-flatt? (cons "Mur" (cons "Fish"  (cons "Find" empty)))) 
-  false) 
-(check-expect 
-  (contains-flatt? (cons "A" (cons "Flatt" (cons "C" empty)))) 
-  true)
+(check-expect (contains-flatt? (cons "Mur" (cons "Fish"  (cons "Find" empty)))) false) 
+(check-expect (contains-flatt? (cons "A" (cons "Flatt" (cons "C" empty)))) true)
 
 (define (contains-flatt? a-list-of-names)
   (cond
